@@ -1,0 +1,103 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="ant-001" author="ant">
+        <preConditions>
+            <not>
+                <tableExists tableName="IMAGE"/>
+            </not>
+        </preConditions>
+        <createTable tableName="IMAGE">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="TITLE" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="DESCRIPTION" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="PRICE" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="SIZE" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="TECHNIQUE" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="YEAR" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="YOU_TUBE_LINK" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="SOLD" type="boolean">
+                <constraints nullable="true"/>
+            </column>
+            <column name="IMAGE_URLS" type="varchar(255) []">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="ant-002" author="ant">
+        <preConditions>
+            <not>
+                <tableExists tableName="BLOG_POST"/>
+            </not>
+        </preConditions>
+        <createTable tableName="BLOG_POST">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="TITLE" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="AUTHOR" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="DATE" type="datetime">
+                <constraints nullable="true"/>
+            </column>
+            <column name="COVER" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="CATEGORY" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="DESCRIPTION" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="CONTENT" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="ant-003" author="ant">
+        <preConditions>
+            <not>
+                <tableExists tableName="COMMENT"/>
+            </not>
+        </preConditions>
+        <createTable tableName="COMMENT">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="NAME" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="E_MAIL" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CONTENT" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DATE" type="datetime">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

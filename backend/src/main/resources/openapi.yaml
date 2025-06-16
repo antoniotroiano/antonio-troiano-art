@@ -1,0 +1,58 @@
+openapi: 3.0.1
+info:
+  title: Antonio Troiano Art API
+  description: REST API für die Verwaltung der Kunstwebseite
+  version: 1.0.0
+  contact:
+    name: Antonio Troiano
+    email: antonio@example.com
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+
+servers:
+  - url: http://localhost:8080
+    description: Lokaler Entwicklungsserver
+
+paths:
+  /api/comments:
+    get:
+      summary: Kommentare abrufen
+      description: Gibt eine Liste aller Kommentare zurück
+      tags:
+        - Kommentare
+      responses:
+        '200':
+          description: Erfolgreiche Antwort
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Comment'
+        '500':
+          description: Interner Serverfehler
+
+components:
+  schemas:
+    Comment:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: Max Mustermann
+        content:
+          type: string
+          example: "Tolles Kunstwerk!"
+        createdAt:
+          type: string
+          format: date-time
+          example: "2025-06-05T12:34:56Z"
+      required:
+        - id
+        - name
+        - content
+        - createdAt

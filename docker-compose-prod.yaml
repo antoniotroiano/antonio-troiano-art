@@ -1,0 +1,72 @@
+services:
+  backend:
+    build:
+      context: ./backend
+    container_name: at-art_backend
+    environment:
+      - MAIL_USERNAME=${MAIL_USERNAME}
+      - MAIL_PASSWORD=${MAIL_PASSWORD}
+      - INSTAGRAM_TOKEN=${INSTAGRAM_TOKEN}
+      - SPRING_PROFILES_ACTIVE=${SPRING_PROFILES_ACTIVE}
+      - SPRING_DATASOURCE_URL=${SPRING_DATASOURCE_URL}
+      - SPRING_DATASOURCE_USERNAME=${SPRING_DATASOURCE_USERNAME}
+      - SPRING_DATASOURCE_PASSWORD=${SPRING_DATASOURCE_PASSWORD}
+    ports:
+      - "8080:8080"
+    networks:
+      - at-art
+    depends_on:
+      - database
+
+  admin-frontend:
+    build:
+      context: ./frontend-admin
+      args:
+        NEXT_PUBLIC_API_URL: http://backend:8080
+    container_name: at-art_admin
+    environment:
+      - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL_ADMIN}
+      - DOCKER=true
+    ports:
+      - "3001:3001"
+    networks:
+      - at-art
+    depends_on:
+      - backend
+
+  web-frontend:
+    build:
+      context: ./frontend-web
+      args:
+        NEXT_PUBLIC_API_URL: http://backend:8080
+    container_name: at-art_web
+    environment:
+      - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL_WEB}
+      - DOCKER=true
+    ports:
+      - "3000:3000"
+    networks:
+      - at-art
+    depends_on:
+      - backend
+
+  database:
+    image: postgres:16-alpine
+    container_name: at-art_db
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - at-art
+
+volumes:
+  db-data:
+
+networks:
+  at-art:
+    driver: bridge

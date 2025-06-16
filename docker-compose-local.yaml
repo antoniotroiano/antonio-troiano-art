@@ -1,0 +1,65 @@
+services:
+  backend:
+    build:
+      context: ./backend
+    container_name: at-art_backend
+    environment:
+      - MAIL_USERNAME=info@antonio-troiano.de
+      - MAIL_PASSWORD=tbPWyuBAJr3AdDpFmY!WQd4mCHoz*4
+      - INSTAGRAM_TOKEN=IGAAYjiP0GDyNBZAE5URlBGSlVNcGFqdHVGdWxKUlFmc2VMNHB0Q2lETzdKaHF0SFNkZAGxGTkZAkOVRMRjE0UXhDY0pSd3B0Sl9DTnZAGci1NWlp4LU1SVXdENVNSbDV6bnU4bTJwTlFaVG9qejlXWDhUeVpQZAWk1ZAXg1QVgyRlZAjbwZDZD
+      - SPRING_PROFILES_ACTIVE=docker
+    ports:
+      - "8080:8080"
+    networks:
+      - at-art
+
+  admin-frontend:
+    build:
+      context: ./frontend-admin
+      args:
+        NEXT_PUBLIC_API_URL: http://backend:8080
+    container_name: at-art_admin
+    environment:
+      - NEXT_PUBLIC_API_URL=http://backend:8080
+    ports:
+      - "3001:3000"
+    networks:
+      - at-art
+    depends_on:
+      - backend
+
+  web-frontend:
+    build:
+      context: ./frontend-web
+      args:
+        NEXT_PUBLIC_API_URL: http://backend:8080
+    container_name: at-art_web
+    environment:
+      - NEXT_PUBLIC_API_URL=http://backend:8080
+    ports:
+      - "3000:3000"
+    networks:
+      - at-art
+    depends_on:
+      - backend
+
+  database:
+    image: postgres:16-alpine
+    container_name: at-art_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: images!836!art5901
+      POSTGRES_DB: art
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - at-art
+
+volumes:
+  db-data:
+
+networks:
+  at-art:
+    driver: bridge

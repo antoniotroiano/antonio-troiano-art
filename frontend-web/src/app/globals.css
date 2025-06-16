@@ -1,0 +1,87 @@
+@import "../../node_modules/tailwindcss";
+@import "@radix-ui/themes/styles.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --background: #fafafa;
+    --foreground: #171717;
+}
+
+html, body {
+    min-height: 100vh;
+}
+
+html {
+    font-family: var(--font-raleway);
+}
+
+body {
+    color: var(--foreground);
+    background: linear-gradient(135deg, #f3e5f5, #fce4ec, #e0f7fa);
+    margin: 0;
+    padding: 0;
+    /* Safe area paddings */
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    padding-left: env(safe-area-inset-left, 0px);
+    padding-right: env(safe-area-inset-right, 0px);
+    /* Legacy iOS fallback */
+    padding-top: constant(safe-area-inset-top, 0px);
+    padding-bottom: constant(safe-area-inset-bottom, 0px);
+    padding-left: constant(safe-area-inset-left, 0px);
+    padding-right: constant(safe-area-inset-right, 0px);
+}
+
+* {
+    outline: none !important;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-up {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.start-artwork-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.start-artwork-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+a {
+    transition: color 0.25s ease;
+}
+
+a:hover {
+    color: #7f5af0;
+}
+
+.glassmorphism-bg {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 0.75rem;
+}
+
+.yarl__container {
+    background-color: rgba(255, 255, 255, 0.08) !important;
+    backdrop-filter: blur(16px) !important;
+    transition: none !important;
+}

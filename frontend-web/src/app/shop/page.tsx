@@ -1,54 +1,71 @@
-import {fetchShop} from "@/lib/api/fetchShop";
-import {ShopCard} from "@/components/shop/ShopCard";
+import {fetchShop} from '@/lib/api/fetchShop';
+import ShopGallery from '@/components/shop/ShopGallery';
+import {Metadata} from 'next';
 
-export const dynamic = "force-dynamic";
+export const dynamic = 'force-dynamic';
 export const revalidate = 86400;
 
-export const metadata = {
-    title: "Shop – Unique Artworks",
-    description: "Browse all available artworks in the shop. Each piece is handcrafted and unique.",
-    openGraph: {
-        title: "Shop – Unique Artworks",
-        description: "Browse all available artworks in the shop. Each piece is handcrafted and unique.",
-        url: "https://antonio-troiano.de/shop",
-        siteName: "Antonio Troiano Art",
-        images: [
-            {
-                url: "https://www.antonio-troiano.de/images/titel.webp",
-                width: 1200,
-                height: 630,
-                alt: "Shop Teaser Image",
-            },
-        ],
-        locale: "de_DE",
-        type: "website",
-    },
-    twitter: {
-        card: "summary_large_image",
-        title: "Shop – Unique Artworks",
-        description: "Browse all available artworks in the shop.",
-        images: ["https://www.antonio-troiano.de/images/titel.webp"],
-    },
+export const generateMetadata = async (): Promise<Metadata> => {
+    const shopImages = await fetchShop();
+
+    const defaultImage = {
+        url: 'https://ik.imagekit.io/atart/titel-og.webp',
+        width: 1200,
+        height: 630,
+        alt: 'Shop Teaser Image',
+    };
+
+    const firstImage = shopImages.length > 0
+        ? {
+            url: shopImages[0].shopImageUrls[0],
+            width: 1200,
+            height: 630,
+            alt: shopImages[0].title,
+        }
+        : defaultImage;
+
+    return {
+        title: 'Shop – Unique Artworks',
+        description: 'Browse and purchase original abstract acrylic artworks by Antonio Troiano. Each piece is one-of-a-kind, expressive, and handmade on canvas – perfect for collectors, art lovers, and interiors.',
+        alternates: {
+            canonical: 'https://antonio-troiano.de/shop',
+        },
+        openGraph: {
+            title: 'Shop – Unique Artworks',
+            description: 'Browse all available artworks in the shop. Each piece is handcrafted and unique.',
+            url: 'https://antonio-troiano.de/shop',
+            siteName: 'Antonio Troiano Art',
+            images: [firstImage],
+            locale: 'de_DE',
+            type: 'website',
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: 'Shop – Unique Artworks',
+            description: 'Browse all available artworks in the shop.',
+            images: [firstImage.url],
+        },
+    };
 };
 
 export default async function Shop() {
     const shopImages = await fetchShop();
 
     const jsonLd = {
-        "@context": "https://schema.org",
-        "@type": "CollectionPage",
-        "name": "Art Shop",
-        "description": "A collection of unique handcrafted artworks.",
-        "mainEntity": {
-            "@type": "ItemList",
-            "itemListElement": shopImages.map((img, index) => ({
-                "@type": "ListItem",
-                "position": index + 1,
-                "url": `https://antonio-troiano.de/shop/${img.id}`,
-                "item": {
-                    "@type": "Product",
-                    "name": img.title,
-                    "image": img.shopImageUrls[0],
+        '@context': 'https://schema.org',
+        '@type': 'CollectionPage',
+        name: 'Art Shop',
+        description: 'A collection of unique handcrafted artworks.',
+        mainEntity: {
+            '@type': 'ItemList',
+            itemListElement: shopImages.map((img, index) => ({
+                '@type': 'ListItem',
+                position: index + 1,
+                url: `https://antonio-troiano.de/shop/${img.id}`,
+                item: {
+                    '@type': 'Product',
+                    name: img.title,
+                    image: Array.isArray(img.shopImageUrls) ? img.shopImageUrls : [img.shopImageUrls],
                 },
             })),
         },
@@ -57,15 +74,7 @@ export default async function Shop() {
     return (
         <>
             <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(jsonLd)}}/>
-            <div className="flex flex-col pt-45 pb-20 justify-center items-center">
-                <div className="w-full max-w-7xl px-13">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-                        {shopImages.map((shopImages) => (
-                            <ShopCard key={shopImages.id} shopImage={shopImages}/>
-                        ))}
-                    </div>
-                </div>
-            </div>
+            <ShopGallery shopImages={shopImages}/>
         </>
     );
 }

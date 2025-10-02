@@ -1,6 +1,15 @@
 import type {NextConfig} from "next";
 
 const nextConfig: NextConfig = {
+    experimental: {
+        ...(process.env.DISABLE_LIGHTNING_CSS
+            ? {
+                css: {
+                    loader: "postcss",
+                },
+            }
+            : {}),
+    } as any,
     async rewrites() {
         if (process.env.DOCKER === "true") {
             return [

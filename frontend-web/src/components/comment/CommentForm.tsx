@@ -65,8 +65,7 @@ export default function CommentForm({postId, onSuccess, onError,}: {
 
     return (
         <div className="flex flex-col gap-3 w-full">
-            <input type="text" name="website" ref={honeypotRef} style={{display: "none"}} tabIndex={-1}
-                   autoComplete="off"/>
+            <input type="text" name="website" ref={honeypotRef} tabIndex={-1} autoComplete="off" className="hidden"/>
             <input type="text" placeholder="Your name" value={name} onChange={(e) => setName(e.target.value)}
                    className="w-full px-3 py-2 rounded-lg border border-gray-300 bg-white/80 text-sm shadow-sm focus:outline-none focus:ring-1 focus:ring-violet-300"/>
             {errors.name && <p className="text-red-500 text-sm -mt-2">{errors.name}</p>}

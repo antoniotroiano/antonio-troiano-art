@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://antonio-troiano.de
+
+# Sitemaps
+Sitemap: https://antonio-troiano.de/sitemap.xml

@@ -1,12 +1,12 @@
 export interface ShopImage {
     id: number;
     title: string;
+    year: string;
     price: string;
     shopImageUrls: string[];
 }
 
 export interface ShopImageDetail extends ShopImage {
-    year: string;
     technique: string;
     size: string;
     sold: boolean;

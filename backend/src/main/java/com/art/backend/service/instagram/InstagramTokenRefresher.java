@@ -24,7 +24,7 @@ public class InstagramTokenRefresher {
         this.restTemplate = restTemplate;
     }
 
-    @Scheduled(cron = "0 0 3 */55 * *")
+    @Scheduled(cron = "0 0 3 * * *")
     public void refreshToken() {
         try {
             final String currentToken = tokenService.getAccessToken();
@@ -32,6 +32,7 @@ public class InstagramTokenRefresher {
 
             final Map response = restTemplate.getForObject(url, Map.class);
             final String newToken = (String) response.get("access_token");
+            log.info("Instagram refresh response: {}", response);
 
             if (newToken != null) {
                 tokenService.saveToken(newToken);

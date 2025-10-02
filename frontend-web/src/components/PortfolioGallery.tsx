@@ -7,6 +7,7 @@ import clsx from 'clsx';
 import Lightbox from 'yet-another-react-lightbox';
 import 'yet-another-react-lightbox/styles.css';
 import {PortfolioImage} from "@/types/portfolio";
+import {withImageKitTransform} from '@/lib/utils/imagekitUrl';
 
 type Props = {
     portfolio: PortfolioImage[];
@@ -61,8 +62,15 @@ export default function PortfolioGallery({portfolio, availableYears, availableTa
     );
 
     return (
-        <div className="pt-45 px-4 py-8 max-w-6xl mx-auto px-13">
-            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between mb-8">
+        <div className="pt-35 px-7 pb-30 max-w-7xl mx-auto">
+            <h1 className="text-2xl lg:text-3xl font-bold text-gray-800 mb-4 text-center">A selection of my
+                artworks</h1>
+            <blockquote
+                className="glassmorphism-bg-infobox p-5 text-center italic max-w-2xl mx-auto mb-10 text-lg text-gray-800">
+                "Each piece tells its own story – a journey through color, texture, and emotion. Discover recent works
+                fresh from my studio."
+            </blockquote>
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between mb-10">
                 <div className="flex flex-wrap gap-2">
                     {availableYears.map(year => (
                         <button key={year} onClick={() => handleYearClick(year)}
@@ -85,13 +93,15 @@ export default function PortfolioGallery({portfolio, availableYears, availableTa
             {filtered.length === 0 ? (
                 <p className="text-neutral-500 text-center">No artworks found.</p>
             ) : (
-                <div className="columns-1 sm:columns-2 md:columns-3 gap-4 space-y-4">
+                <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-9 space-y-12">
                     {filtered.map((item, idx) => (
                         <div key={item.id} className="break-inside-avoid">
                             <div className="group relative overflow-hidden rounded-lg shadow-md cursor-zoom-in"
                                  onClick={() => setLightboxIndex(idx)}>
-                                <Image urlEndpoint="https://ik.imagekit.io/atart" src={item.imageUrls[0]}
-                                       alt={item.title} width={600} height={800}
+                                <Image urlEndpoint="https://ik.imagekit.io/atart"
+                                       src={withImageKitTransform(item.imageUrls[0], "w-600,q-70")} alt={item.title}
+                                       title={item.title} width={600} height={800} decoding="async"
+                                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                                        className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105"/>
                                 <div className="absolute bottom-0 w-full bg-black/60 text-white px-3 py-2 text-sm">
                                     {item.title} · {item.year}
@@ -104,10 +114,10 @@ export default function PortfolioGallery({portfolio, availableYears, availableTa
             {lightboxIndex !== null && (
                 <Lightbox open index={lightboxIndex} close={() => setLightboxIndex(null)}
                           slides={filtered.map(item => ({
-                              src: "https://ik.imagekit.io/atart" + item.imageUrls[0],
-                              alt: item.title,
-                              description: `${item.title} · ${item.year}`,
-                          }))} animation={{fade: 50}}/>
+                              src: "https://ik.imagekit.io/atart" + withImageKitTransform(item.imageUrls[0], "w-1200,q-70"),
+                              alt: item.title, description: `${item.title} · ${item.year}`,
+                          }))} animation={{fade: 50}}
+                />
             )}
         </div>
     );

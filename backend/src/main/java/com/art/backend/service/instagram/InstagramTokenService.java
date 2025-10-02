@@ -28,7 +28,7 @@ public class InstagramTokenService {
     @PostConstruct
     public void init() {
         try {
-            final boolean exists = instagramTokenRepository.existsById(1L);
+            final boolean exists = instagramTokenRepository.count() > 0;
             if (!exists && initialToken != null && !initialToken.isBlank()) {
                 final InstagramToken token = new InstagramToken();
                 token.setAccessToken(initialToken);
@@ -37,7 +37,6 @@ public class InstagramTokenService {
 
                 log.info("Initial Instagram token: {}", initialToken);
                 instagramTokenRepository.save(token);
-                log.info(instagramTokenRepository.findAll().toString());
                 log.info("Initial Instagram token inserted into database.");
             } else {
                 log.info("Instagram token already exists in DB or no initial token configured.");
@@ -52,14 +51,14 @@ public class InstagramTokenService {
     }
 
     private String loadToken() {
-        return instagramTokenRepository.findById(1L)
+        return instagramTokenRepository.findTopByOrderByLastRefreshedDesc()
                 .orElseThrow(() -> new IllegalStateException("Instagram token not found"))
                 .getAccessToken();
     }
 
     @Transactional
     void saveToken(final String token) {
-        final InstagramToken tokenEntity = instagramTokenRepository.findById(1L)
+        final InstagramToken tokenEntity = instagramTokenRepository.findTopByOrderByLastRefreshedDesc()
                 .orElse(new InstagramToken());
 
         tokenEntity.setAccessToken(token);
@@ -69,13 +68,13 @@ public class InstagramTokenService {
     }
 
     Instant loadLastRefreshTime() {
-        return instagramTokenRepository.findById(1L)
+        return instagramTokenRepository.findTopByOrderByLastRefreshedDesc()
                 .orElseThrow(() -> new IllegalStateException("Instagram token not found"))
                 .getLastRefreshed();
     }
 
     void saveLastRefreshTime(final Instant time) {
-        final InstagramToken tokenEntity = instagramTokenRepository.findById(1L)
+        final InstagramToken tokenEntity = instagramTokenRepository.findTopByOrderByLastRefreshedDesc()
                 .orElseThrow(() -> new IllegalStateException("Instagram token not found"));
 
         tokenEntity.setLastRefreshed(time);

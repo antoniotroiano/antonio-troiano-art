@@ -2,6 +2,8 @@
 
 import {motion} from "framer-motion";
 import {BlogPost} from "@/types/post";
+import {Image} from "@imagekit/next";
+import {withImageKitTransform} from "@/lib/utils/imagekitUrl";
 
 interface BlogCardProps {
     post: BlogPost;
@@ -10,12 +12,13 @@ interface BlogCardProps {
 export function BlogCard({post}: BlogCardProps) {
     return (
         <motion.article initial={{opacity: 0, y: 50}} animate={{opacity: 1, y: 0}}
-                        className="flex flex-col gap-4 bg-white/10 backdrop-blur-md border border-white/20 shadow-md hover:shadow-lg rounded-2xl p-6 transition-transform hover:scale-[1.015]"
+                        className="flex flex-col gap-4 bg-white/10 backdrop-blur-md border border-white/20 shadow-md hover:shadow-lg rounded-xl p-4 transition-transform hover:scale-[1.015]"
                         transition={{duration: 0.6, type: "spring", stiffness: 100}}>
             <a href={`/blog/${post.id}`}>
-                <motion.img src={`https://ik.imagekit.io/atart${post.cover}`} alt={`Cover image for ${post.title}`}
-                            className="rounded-xl mb-2" initial={{scale: 0.95}} animate={{scale: 1}}
-                            transition={{duration: 0.5}}/>
+                <Image urlEndpoint="https://ik.imagekit.io/atart" src={withImageKitTransform(post.cover, "w-600,q-70")}
+                       alt={`Cover image for ${post.title}`} title={post.title} width={600} height={400}
+                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                       className="w-full h-auto object-cover rounded-xl mb-2" loading="lazy"/>
             </a>
             <div className="flex items-center justify-between text-xs">
                 <time dateTime={post.date} className="text-gray-500">

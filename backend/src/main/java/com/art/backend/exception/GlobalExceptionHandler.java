@@ -15,6 +15,7 @@ import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.context.request.async.AsyncRequestNotUsableException;
 import org.springframework.web.servlet.NoHandlerFoundException;
 import org.springframework.web.servlet.resource.NoResourceFoundException;
 
@@ -116,8 +117,37 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(NoResourceFoundException.class)
     public ResponseEntity<Void> handleNoResourceFound(final NoResourceFoundException ex) {
-        log.warn("No resource found exception: {}", ex.getMessage());
+        final String msg = ex.getMessage();
+
+        if (shouldSuppressResourceLogs(msg)) {
+            log.debug("Ignored missing static resource request: {}", msg);
+            return ResponseEntity.notFound().build();
+        }
+
+        log.warn("No resource found exception: {}", msg);
         return ResponseEntity.notFound().build();
+    }
+
+    @ExceptionHandler(AsyncRequestNotUsableException.class)
+    public ResponseEntity<Void> handleAsyncRequestNotUsable(final AsyncRequestNotUsableException ex) {
+        log.debug("Client aborted the request prematurely: {}", ex.getMessage());
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+    }
+
+    private static boolean shouldSuppressResourceLogs(final String msg) {
+        return msg != null && (
+                msg.contains("favicon.ico") ||
+                        msg.contains("robots.txt") ||
+                        msg.contains("hudson") ||
+                        msg.contains("get.php") ||
+                        msg.contains("login.html") ||
+                        msg.contains(".git") ||
+                        msg.contains("cgi-bin") ||
+                        msg.contains(".env.old.") ||
+                        msg.contains(".env.example.") ||
+                        msg.contains("api/customers") ||
+                        msg.contains("api/profiles")
+        );
     }
 
     private static boolean shouldSuppressLog(final String path) {
@@ -136,6 +166,5 @@ public class GlobalExceptionHandler {
                 "/api/session/properties"
         );
         return ignoredPaths.contains(path) || path.endsWith(".php") || path.endsWith(".cgi") || path.endsWith(".asp");
-
     }
 }

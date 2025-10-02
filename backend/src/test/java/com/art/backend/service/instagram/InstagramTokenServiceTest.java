@@ -41,7 +41,7 @@ class InstagramTokenServiceTest {
     @Test
     void init_doesNotInsertIfTokenExists() throws Exception {
         // Given
-        when(repository.existsById(1L)).thenReturn(true);
+        when(repository.count()).thenReturn(1L);
         setInitialToken("initial-token");
 
         // When
@@ -68,7 +68,7 @@ class InstagramTokenServiceTest {
     void getAccessToken_returnsToken() {
         // Given
         final InstagramToken token = createToken();
-        when(repository.findById(1L)).thenReturn(Optional.of(token));
+        when(repository.findTopByOrderByLastRefreshedDesc()).thenReturn(Optional.of(token));
 
         // When
         final String accessToken = subjectUnderTest.getAccessToken();
@@ -128,7 +128,7 @@ class InstagramTokenServiceTest {
         final Instant now = Instant.now();
         final InstagramToken token = createToken();
         token.setLastRefreshed(now);
-        when(repository.findById(1L)).thenReturn(Optional.of(token));
+        when(repository.findTopByOrderByLastRefreshedDesc()).thenReturn(Optional.of(token));
 
         // When
         final Instant lastRefreshed = subjectUnderTest.loadLastRefreshTime();
@@ -152,7 +152,7 @@ class InstagramTokenServiceTest {
     void saveLastRefreshTime_updatesAndSaves() {
         // Given
         final InstagramToken token = createToken();
-        when(repository.findById(1L)).thenReturn(Optional.of(token));
+        when(repository.findTopByOrderByLastRefreshedDesc()).thenReturn(Optional.of(token));
         final Instant newTime = Instant.now();
 
         // When

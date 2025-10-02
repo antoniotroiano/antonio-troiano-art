@@ -1,52 +1,52 @@
 import ContactWrapper from "@/components/contact/ContactWrapper";
 
 export const metadata = {
-    title: "Contact – Antonio Troiano Art",
-    description: "Get in touch with Antonio Troiano for inquiries, commissions or collaborations.",
+    title: 'Contact – Antonio Troiano Art',
+    description: 'Get in touch with Antonio Troiano for inquiries, art commissions, or collaborations. Whether you\'re a collector, gallery, or just curious – your message is always welcome.',
     keywords: [
-        "Antonio Troiano",
-        "Contact",
-        "Art Inquiries",
-        "Art Commissions",
-        "Collaboration",
-        "Modern Art",
-        "Abstract Artist",
-        "Contact Antonio Troiano"
+        'Antonio Troiano',
+        'Contact',
+        'Art Inquiries',
+        'Art Commissions',
+        'Collaboration',
+        'Modern Art',
+        'Abstract Artist',
+        'Contact Antonio Troiano',
     ],
     alternates: {
-        canonical: "https://www.antonio-troiano.de/contact",
+        canonical: 'https://antonio-troiano.de/contact',
     },
     openGraph: {
-        title: "Contact – Antonio Troiano Art",
-        description: "Reach out to Antonio Troiano for custom artwork, collaborations or general inquiries.",
-        url: "https://www.antonio-troiano.de/contact",
-        siteName: "Antonio Troiano Art",
+        title: 'Contact – Antonio Troiano Art',
+        description: 'Reach out to Antonio Troiano for custom artwork, collaborations or general inquiries.',
+        url: 'https://antonio-troiano.de/contact',
+        siteName: 'Antonio Troiano Art',
         images: [
             {
-                url: "https://www.antonio-troiano.de/images/titel.webp",
+                url: 'https://ik.imagekit.io/atart/titel-og.webp',
                 width: 1200,
                 height: 630,
-                alt: "Antonio Troiano Contact",
+                alt: 'Antonio Troiano Contact',
             },
         ],
-        locale: "de_DE",
-        type: "website",
+        locale: 'de_DE',
+        type: 'website',
     },
     twitter: {
-        card: "summary_large_image",
-        title: "Contact – Antonio Troiano Art",
-        description: "Reach out to Antonio Troiano for commissions, collaborations or questions.",
-        images: ["https://www.antonio-troiano.de/images/titel.webp"],
+        card: 'summary_large_image',
+        title: 'Contact – Antonio Troiano Art',
+        description: 'Reach out to Antonio Troiano for commissions, collaborations or questions.',
+        images: ['https://ik.imagekit.io/atart/titel-og.webp'],
     },
 };
 
 export default function ContactPage() {
     const jsonLd = {
-        "@context": "https://schema.org",
-        "@type": "ContactPage",
-        name: "Contact – Antonio Troiano Art",
-        url: "https://antonio-troiano.de/contact",
-        description: "Get in touch with Antonio Troiano for inquiries, commissions or collaborations.",
+        '@context': 'https://schema.org',
+        '@type': 'ContactPage',
+        name: 'Contact – Antonio Troiano Art',
+        url: 'https://antonio-troiano.de/contact',
+        description: 'Get in touch with Antonio Troiano for inquiries, commissions or collaborations.',
     };
 
     return (

@@ -40,14 +40,14 @@ export default function CommentSection({postId, onCommentSubmitted,}: {
 
     return (
         <div className="relative pb-5" ref={containerRef}>
-            <div className="text-xl font-semibold mb-4">Leave a comment</div>
+            <div className="text-xl font-semibold pb-4">Leave a comment</div>
             <button onClick={() => setFormOpen(!formOpen)}
                     className="flex items-center gap-2 px-3 py-1 rounded-lg border border-violet-200 text-slate-700 backdrop-blur bg-white/30 hover:bg-violet-100 hover:text-slate-900 transition-colors duration-300 shadow-md">
                 Comment
             </button>
             {formOpen && (
                 <div
-                    className="absolute z-50 mt-1 w-full max-w-md bg-white border border-purple-200/40 shadow-xl rounded-xl p-5">
+                    className="absolute z-50 mt-2 w-full max-w-md bg-white border border-purple-200/40 shadow-xl rounded-xl p-4">
                     <CommentForm postId={postId} onSuccess={(msg) => {
                         onCommentSubmitted();
                         showAlert(msg);

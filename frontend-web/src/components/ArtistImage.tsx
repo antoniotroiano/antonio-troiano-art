@@ -1,8 +1,11 @@
+"use client"
+
 import Image from "next/image";
 
 export function ArtistImage({src, alt}: { src: string; alt: string }) {
     return (
-        <Image width={300} height={300} alt={alt} src={src}
-               className="rounded-lg shadow-lg w-full sm:w-1/2 md:w-3/4 xl:w-3/4"/>
+        <Image src={src} alt={alt} title="Antonio Troiano" width={582} height={776} loading="lazy"
+               sizes="(max-width: 582px) 100vw, 50vw" className="rounded-xl shadow-lg w-full max-w-md select-none"
+               onContextMenu={(e) => e.preventDefault()}/>
     );
 }

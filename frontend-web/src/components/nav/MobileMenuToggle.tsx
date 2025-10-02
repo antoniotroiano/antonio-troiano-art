@@ -24,7 +24,7 @@ export default function MobileMenuToggle() {
                 }`}/>
             </button>
             <ul
-                className={`fixed top-0 left-0 w-full h-screen bg-white/90 backdrop-blur-md flex flex-col items-center justify-center space-y-10 text-lg font-bold uppercase transform transition-transform ${
+                className={`fixed top-0 left-0 w-full h-screen bg-white/95 backdrop-blur-md flex flex-col items-center space-y-8 text-xl font-bold uppercase transform transition-transform pt-48 ${
                     menuOpen ? "translate-x-0" : "translate-x-full"
                 } md:hidden z-40 overflow-y-auto`}>
                 {navItems.map(({href, label}) => {

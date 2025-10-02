@@ -1,42 +1,78 @@
-@import "../../node_modules/tailwindcss";
-@import "@radix-ui/themes/styles.css";
+@import "tailwindcss";
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@plugin "@tailwindcss/typography";
 
-:root {
-    --background: #fafafa;
-    --foreground: #171717;
+@layer utilities {
+    @media (hover: none) and (pointer: coarse) {
+        .show-on-touch {
+            display: block !important;
+        }
+
+        .hide-on-touch {
+            display: none !important;
+        }
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+        .show-on-touch {
+            display: none !important;
+        }
+    }
 }
 
 html, body {
     min-height: 100vh;
-}
-
-html {
-    font-family: var(--font-raleway);
+    font-family: var(--font-raleway), serif;
+    margin: 0;
+    padding: 0;
+    color: var(--foreground);
+    background: linear-gradient(135deg, #f3e5f5, #fce4ec, #e0f7fa);
 }
 
 body {
-    color: var(--foreground);
-    background: linear-gradient(135deg, #f3e5f5, #fce4ec, #e0f7fa);
-    margin: 0;
-    padding: 0;
-    /* Safe area paddings */
-    padding-top: env(safe-area-inset-top, 0px);
-    padding-bottom: env(safe-area-inset-bottom, 0px);
-    padding-left: env(safe-area-inset-left, 0px);
-    padding-right: env(safe-area-inset-right, 0px);
-    /* Legacy iOS fallback */
-    padding-top: constant(safe-area-inset-top, 0px);
-    padding-bottom: constant(safe-area-inset-bottom, 0px);
-    padding-left: constant(safe-area-inset-left, 0px);
-    padding-right: constant(safe-area-inset-right, 0px);
+    overscroll-behavior: none;
+    touch-action: manipulation;
 }
 
 * {
     outline: none !important;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.9s ease forwards;
+}
+
+.fade-in-delay {
+    opacity: 0;
+    animation: fadeIn 0.3s ease forwards;
+    animation-delay: 1s;
+}
+
+@keyframes fadeInScale {
+    0% {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.animate-fadeInScale {
+    animation: fadeInScale 0.3s ease-out forwards;
 }
 
 @keyframes fadeInUp {
@@ -73,6 +109,21 @@ a:hover {
 }
 
 .glassmorphism-bg {
+    background: linear-gradient(135deg, #f3e5f5, #fce4ec, #e0f7fa);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.glassmorphism-bg-infobox {
+    background: linear-gradient(135deg, #e0f7fa, #fce4ec, #f3e5f5);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 0.75rem;
+}
+
+.glassmorphism-bg-social_media {
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
     backdrop-filter: blur(10px);
@@ -84,4 +135,8 @@ a:hover {
     background-color: rgba(255, 255, 255, 0.08) !important;
     backdrop-filter: blur(16px) !important;
     transition: none !important;
+}
+
+.yarl__toolbar {
+    padding-top: env(safe-area-inset-top) !important;
 }

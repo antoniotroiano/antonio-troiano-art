@@ -32,10 +32,10 @@ export async function generateMetadata({params}: { params: Promise<{ id: string 
 
         return {
             title: `${shopImage.title} – Antonio Troiano Art`,
-            description: `Artwork: ${shopImage.title}. Price: ${shopImage.price ? shopImage.price + " €" : "Preis auf Anfrage"}`,
+            description: `Artwork: ${shopImage.title}. Price: ${shopImage.price}`,
             openGraph: {
                 title: `${shopImage.title} – Antonio Troiano Art`,
-                description: `Artwork: ${shopImage.title}. Price: ${shopImage.price ? shopImage.price + " €" : "Preis auf Anfrage"}`,
+                description: `Artwork: ${shopImage.title}. Price: ${shopImage.price}`,
                 url: `https://antonio-troiano.de/shop/${id}`,
                 siteName: "Antonio Troiano Art",
                 type: "website",
@@ -75,7 +75,7 @@ export default async function ShopImageDetailPage({params}: { params: Promise<{ 
     }
 
     if (!shopImageDetail) {
-        return <p className="text-center mt-20 text-lg">Artwork not found.</p>;
+        return <p className="text-center pt-35 text-lg">Artwork not found.</p>;
     }
 
     const jsonLd = {
@@ -112,8 +112,8 @@ export default async function ShopImageDetailPage({params}: { params: Promise<{ 
     return (
         <>
             <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(jsonLd)}}/>
-            <div className="flex flex-col pt-45 justify-center items-center">
-                <div className="grid grid-cols-1 gap-8 max-w-6xl mb-30 xl:px-0 px-13 w-full">
+            <div className="flex flex-col pt-35 pb-30 px-7 xl:px-0 justify-center items-center">
+                <div className="grid grid-cols-1 max-w-6xl w-full">
                     <ShopDetailCard shopImageDetail={shopImageDetail}/>
                 </div>
             </div>

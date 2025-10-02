@@ -11,7 +11,7 @@ export default function PrivacyCheckbox({agreed, setAgreed, error}: Props) {
                 <input type="checkbox" checked={agreed} onChange={(e) => setAgreed(e.target.checked)}
                        className="mt-1 h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-300"/>
                 <span>I agree to the processing of my data according to the{" "}
-                    <a href="/privacy" className="text-indigo-600 hover:text-indigo-800 transition-colors">
+                    <a href="/imprint" className="text-indigo-600 hover:text-indigo-800 transition-colors">
                         privacy policy
                     </a>.
                 </span>

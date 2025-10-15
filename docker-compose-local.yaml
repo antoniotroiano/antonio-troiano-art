@@ -43,6 +43,21 @@ services:
     depends_on:
       - backend
 
+  test-frontend:
+    build:
+      context: ./frontend-test
+      args:
+        NEXT_PUBLIC_API_URL: http://backend:8080
+    container_name: at-art_test
+    environment:
+      - NEXT_PUBLIC_API_URL=http://backend:8080
+    ports:
+      - "3002:3000"
+    networks:
+      - at-art
+    depends_on:
+      - backend
+
   database:
     image: postgres:16-alpine
     container_name: at-art_db

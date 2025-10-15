@@ -1,0 +1,817 @@
+/* (Das Basis-CSS von vorhin bleibt größtenteils gleich...) */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@300;400&display=swap');
+/* --- Basis-Styling & Variablen --- */
+:root {
+    --font-main: 'Roboto', sans-serif;
+    --font-headline: 'Playfair Display', serif;
+    --color-text: #333;
+    --color-light: #f4f4f4;
+    --color-dark: #111;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+a:hover {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+button:hover {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+body {
+    font-family: var(--font-main), serif;
+    font-weight: 300;
+    margin: 0;
+    color: var(--color-text);
+    background-color: var(--color-light);
+}
+
+.section {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-padding {
+    padding: 80px 40px;
+}
+
+.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 3em;
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.btn-center {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 35px;
+    background: #333;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: background 0.3s ease;
+}
+
+.btn:hover {
+    background: #555;
+}
+
+/* --- HERO-BEREICH MIT VIDEO & GLAS-DESIGN --- */
+.hero-section {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    overflow: hidden;
+}
+
+#hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -100;
+    transform: translateX(-50%) translateY(-50%);
+    object-fit: cover;
+}
+
+.hero-section::before { /* Dunkler Overlay für bessere Lesbarkeit */
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+
+.glass-panel {
+    position: relative;
+    z-index: 2;
+    width: 90%;
+    max-width: 800px;
+    padding: 50px;
+    text-align: center;
+
+    background: rgba(255, 255, 255, 0.1); /* Leichte Anpassung für besseren Kontrast */
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+}
+
+.glass-panel h1 {
+    font-family: var(--font-headline), serif;
+    font-size: 4em;
+    margin: 0;
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2); /* Subtiler Schatten für Lesbarkeit */
+}
+
+.glass-panel p {
+    font-size: 1.2em;
+    max-width: 600px;
+    margin: 20px auto 0 auto;
+    line-height: 1.6;
+}
+
+/* --- NEU: Sticky Navigation --- */
+nav.main-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.4s ease-out; /* Sanfter Übergang */
+}
+
+/* Style, wenn die Navi OBEN im Hero-Bild ist */
+nav.nav-top {
+    background: transparent;
+}
+
+/* Style, wenn man nach unten gescrollt hat */
+nav.nav-scrolled {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 15px 40px;
+}
+
+nav .logo {
+    font-family: var(--font-headline), serif;
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: white;
+    transition: color 0.4s ease-out;
+}
+
+nav.nav-scrolled .logo {
+    color: #333;
+}
+
+nav .nav-links a {
+    color: white;
+    text-decoration: none;
+    margin-left: 30px;
+    font-weight: 600;
+    transition: color 0.4s ease-out;
+}
+
+nav.nav-scrolled .nav-links a {
+    color: #333; /* Textfarbe ändern */
+}
+
+nav.nav-initial {
+    padding: 20px 40px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(5px);
+    box-shadow: none;
+}
+
+nav.nav-initial .logo {
+    color: #333;
+}
+
+nav.nav-initial .nav-links a {
+    color: #333;
+}
+
+/* --- ASYMMETRISCHES PORTFOLIO-LAYOUT --- */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-auto-rows: 250px;
+    gap: 20px;
+}
+
+.portfolio-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.portfolio-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.portfolio-item:hover img {
+    transform: scale(1.05);
+}
+
+.portfolio-item:nth-child(1) {
+    grid-column: span 2;
+    grid-row: span 1;
+}
+
+.portfolio-item:nth-child(2) {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.portfolio-item:nth-child(3) {
+    grid-column: span 2;
+    grid-row: span 1;
+}
+
+.portfolio-item:nth-child(4) {
+    grid-column: span 3;
+    grid-row: span 2;
+}
+
+.portfolio-item:nth-child(5) {
+    grid-column: span 3;
+    grid-row: span 1;
+}
+
+.portfolio-item:nth-child(6) {
+    grid-column: span 2;
+    grid-row: span 1;
+}
+
+.portfolio-item:nth-child(7) {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.portfolio-item:nth-child(8) {
+    grid-column: span 2;
+    grid-row: span 1;
+}
+
+.portfolio-item:nth-child(9) {
+    grid-column: span 3;
+    grid-row: span 2;
+}
+
+.portfolio-item:nth-child(10) {
+    grid-column: span 3;
+    grid-row: span 1;
+}
+
+.portfolio-item .overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    font-size: 1.2rem;
+}
+
+.portfolio-item:hover .overlay {
+    opacity: 1;
+}
+
+/* --- NEU: Shop Sektion --- */
+#shop {
+    background-color: #e9e9e9; /* Leichter Kontrast zum Rest */
+}
+
+.shop-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.shop-item {
+    text-align: center;
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+}
+
+.shop-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 16px 40px 0 rgba(0, 0, 0, 0.2);
+}
+
+.shop-item img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.shop-item h3 {
+    font-family: var(--font-headline), serif;
+    font-size: 1.5em;
+    margin: 0 0 10px 0;
+    color: white;
+}
+
+.shop-item .price {
+    font-size: 1.2em;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 20px;
+}
+
+.shop-item .btn {
+    display: inline-block;
+    padding: 10px 30px;
+    background: rgba(255, 255, 255, 0.8);
+    color: var(--color-dark);
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: background 0.3s;
+}
+
+.shop-item .btn:hover {
+    background: white;
+}
+
+/* --- NEU: Blog Vorschau --- */
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.blog-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.blog-card:hover {
+    transform: translateY(-5px);
+}
+
+.blog-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.blog-card-content {
+    padding: 20px;
+}
+
+.blog-card h3 {
+    font-family: 'Playfair Display', serif;
+    margin-top: 0;
+}
+
+.blog-card p {
+    font-size: 0.9em;
+}
+
+.blog-card a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* --- NEU: Kontakt Sektion --- */
+.contact-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 50px;
+}
+
+.contact-container p {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 1.1em;
+    color: white;
+}
+
+.contact-form .form-group {
+    margin-bottom: 20px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    font-family: var(--font-main), serif;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* --- NEU: Footer --- */
+footer {
+    text-align: center;
+    padding: 30px;
+    background: #222;
+    color: #aaa;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* --- NEU: "Nach oben"-Button --- */
+#scrollTopBtn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 999;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s, background-color 0.3s;
+}
+
+#scrollTopBtn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+#scrollTopBtn.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* --- NEU: "Zurück"-Button (basiert auf scrollTopBtn) --- */
+#goBackBtn {
+    position: fixed;
+    top: 150px;
+    left: 30px;
+    z-index: 999;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    cursor: pointer;
+
+    opacity: 1;
+    visibility: visible;
+    transition: background-color 0.3s;
+}
+
+#goBackBtn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* --- NEU: Glas-Button-Styling --- */
+.btn-glass {
+    display: inline-block;
+    padding: 12px 40px;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 30px; /* Rundere Form für Eleganz */
+    color: white;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    font-size: 1.1em;
+
+    background: rgba(255, 255, 255, 0.15);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+
+    transition: all 0.3s ease;
+}
+
+.btn-glass:hover {
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    transform: translateY(-3px);
+}
+
+.btn-glass.dark-text-on-light-bg {
+    /*    color: #333;
+        text-shadow: 0 1px 3px rgba(255, 255, 255, 0.5);
+        box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.1);
+        background: rgba(255, 255, 255, 0.25);
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);*/
+    color: #333;
+    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.5);
+    box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.1);
+    background: rgba(240, 240, 255, 0.5);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+.btn-glass.dark-text-on-light-bg:hover {
+    /*    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.15);
+        background: rgba(255, 255, 255, 0.4);*/
+    background: rgba(220, 220, 255, 0.7);
+    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.15);
+    text-shadow: 0 0 10px rgba(82, 82, 82, 0.5);
+}
+
+.btn-glass-shop-request {
+    display: inline-block;
+    padding: 10px 30px;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 10px;
+    color: white;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    font-size: 1.1em;
+
+    background: rgba(255, 255, 255, 0.15);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+
+    transition: all 0.3s ease;
+}
+
+.btn-glass-shop-request:hover {
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    transform: translateY(-3px);
+}
+
+.btn-glass-shop-request.dark-text-on-light-bg {
+    color: #333;
+    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.5);
+    box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.25);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-glass-shop-request.dark-text-on-light-bg:hover {
+    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.15);
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.btn-portfolio {
+    border-radius: 10px;
+    transition: all 0.3s ease;
+
+    display: inline-block;
+    padding: 9px 20px;
+    text-decoration: none;
+    font-weight: 300;
+    font-size: 1em;
+
+    color: #333;
+    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.5);
+    box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.1);
+    background: rgba(240, 240, 255, 0.5);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+.btn-portfolio:hover {
+    transform: translateY(-3px);
+    background: rgba(220, 220, 255, 0.7);
+    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.15);
+}
+
+.btn-portfoli:active {
+    background: rgba(200, 200, 255, 0.8);
+    box-shadow: none;
+    transform: translateY(1px);
+    padding: 11px 39px;
+}
+
+/*Portfolio Seite*/
+.filter-nav {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.filter-nav button {
+    margin: 0 10px;
+    padding: 8px 20px;
+    border: 1px solid #ccc;
+    background: transparent;
+    cursor: pointer;
+}
+
+.filter-nav button.active {
+    background: #333;
+    color: white;
+}
+
+/*Produkt Karte*/
+.product-card {
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    text-decoration: none;
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+}
+
+.product-card img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    display: block;
+}
+
+.product-card-info {
+    padding: 20px;
+}
+
+.product-card h3 {
+    margin: 0 0 10px 0;
+    font-family: 'Playfair Display', serif;
+}
+
+.product-card .price {
+    font-size: 1.1em;
+    font-weight: 600;
+    color: #555;
+}
+
+/*Product Details*/
+.product-detail-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 0 40px;
+    align-items: center;
+}
+
+.product-image img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.product-info h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3em;
+    margin: 0 0 20px 0;
+}
+
+.product-info .price {
+    font-size: 1.8em;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #111;
+}
+
+.product-info .description {
+    line-height: 1.7;
+    margin-bottom: 30px;
+}
+
+.product-specs {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 30px;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+
+.product-specs li {
+    margin-bottom: 10px;
+}
+
+.product-specs strong {
+    display: inline-block;
+    width: 120px;
+    color: #555;
+}
+
+/*Blog Karte*/
+.blog-list {
+    max-width: 900px;
+    margin: 0 auto;
+    transition: all 0.3s ease;
+}
+
+.blog-list:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+}
+
+.blog-post-summary {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 30px;
+    margin-bottom: 50px;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    text-decoration: none;
+    color: #333;
+}
+
+.blog-post-summary img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.blog-post-content {
+    padding: 30px;
+}
+
+.blog-post-content h2 {
+    font-family: 'Playfair Display', serif;
+    margin: 0 0 10px 0;
+}
+
+.blog-post-content .meta {
+    font-size: 0.9em;
+    color: #777;
+    margin-bottom: 15px;
+}
+
+.blog-post-content .excerpt {
+    line-height: 1.6;
+}
+
+/*Article details*/
+.article-header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 40px auto;
+}
+
+.article-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5em;
+    margin-bottom: 15px;
+}
+
+.article-header .meta {
+    font-size: 1em;
+    color: #777;
+}
+
+.article-hero-image {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    margin-bottom: 50px;
+}
+
+.article-content {
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.8;
+    font-size: 1.1em;
+}
+
+.article-content h2 {
+    font-family: 'Playfair Display', serif;
+    margin-top: 40px;
+}
+
+.article-content p {
+    margin-bottom: 20px;
+}

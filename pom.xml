@@ -19,6 +19,7 @@
         <module>backend</module>
         <module>frontend-web</module>
         <module>frontend-admin</module>
+        <module>frontend-test</module>
     </modules>
 
     <properties>

@@ -1,0 +1,199 @@
+/* --- Artist Styles --- */
+.artist-container {
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+.about-notes {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* Top: Titel links, Chips rechts (magazinartig) */
+.about-notes__top {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 18px;
+}
+
+/*Kann wohl weg*/
+/*.about-notes__title {
+    margin: 0;
+    font-size: clamp(1.8rem, 2.6vw, 2.3rem);
+    letter-spacing: -0.02em;
+    color: rgba(0, 0, 0, 0.88);
+}*/
+
+.about-notes__actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* Layout: Essay links, Info rechts */
+.about-notes__layout {
+    display: grid;
+    grid-template-columns: 1.35fr 0.65fr;
+    gap: 28px;
+    align-items: start;
+}
+
+.about-notes__essay {
+    font-size: 1.02rem;
+    line-height: 1.75;
+    color: rgba(0, 0, 0, 0.78);
+}
+
+.about-notes__lead {
+    margin: 0 0 10px;
+    font-size: 1.08rem;
+    color: rgba(0, 0, 0, 0.86);
+}
+
+.about-notes__essay p {
+    margin: 0 0 12px;
+}
+
+.about-notes__muted {
+    color: rgba(0, 0, 0, 0.58);
+}
+
+/* Info-Spalte: nur Linie + Blocks */
+.about-notes__info {
+    border-left: 1px solid rgba(0, 0, 0, 0.10);
+    padding-left: 22px;
+}
+
+.about-notes__infoBlock {
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.about-notes__infoBlock:last-child {
+    border-bottom: none;
+}
+
+.about-notes__k {
+    font-weight: 750;
+    font-size: 0.9rem;
+    letter-spacing: 0.2px;
+    color: rgba(0, 0, 0, 0.55);
+    margin-bottom: 4px;
+}
+
+.about-notes__v {
+    color: rgba(0, 0, 0, 0.78);
+    line-height: 1.55;
+    font-size: 0.98rem;
+}
+
+/* Bottom: feine Abschlusslinie + Signatur */
+.about-notes__bottom {
+    margin-top: 22px;
+}
+
+.about-notes__rule {
+    height: 1px;
+    background: rgba(0, 0, 0, 0.10);
+    margin-bottom: 12px;
+}
+
+.about-notes__signature {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    color: rgba(0, 0, 0, 0.62);
+    font-size: 0.95rem;
+}
+
+.about-notes__name {
+    font-weight: 750;
+    color: rgba(0, 0, 0, 0.78);
+}
+
+.about-notes__dot {
+    opacity: 0.5;
+}
+
+.about-notes__tag {
+    opacity: 0.85;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .about-notes__layout {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .about-notes__info {
+        border-left: none;
+        padding-left: 0;
+        border-top: 1px solid rgba(0, 0, 0, 0.10);
+        padding-top: 14px;
+    }
+}
+
+.artist-context-inner {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+@media (max-width: 800px) {
+    .artist-context-inner {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+}
+
+.artist-context-text h2 {
+    margin-bottom: 20px;
+    font-family: Playfair Display, serif;
+}
+
+.artist-context-text p {
+    margin-bottom: 18px;
+    line-height: 1.7;
+}
+
+.artist-context-text {
+    background: none;
+    backdrop-filter: none;
+    padding: 0;
+    box-shadow: none;
+}
+
+.artist-context-highlight {
+    background: none;
+    backdrop-filter: none;
+    box-shadow: none;
+    padding: 0;
+}
+
+.artist-context-highlight blockquote {
+    font-size: 1.8rem;
+    font-style: italic;
+    opacity: 0.7;
+    font-family: Playfair, serif;
+    line-height: 1.4;
+}
+
+.artist-context-divider {
+    height: 2px;
+    margin: 25px 0;
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(0, 0, 0, 0.15),
+            transparent);
+}
+
+.text-highlight {
+    color: #4f8f8a;
+    font-weight: 500;
+}

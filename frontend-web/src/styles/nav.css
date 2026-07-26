@@ -1,0 +1,377 @@
+/* --- Sticky Navigation --- */
+nav.main-nav {
+    border-radius: 10px;
+    overflow: visible;
+    border: 1px solid transparent;
+    padding: 13px 33px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition:
+        background-color 0.4s ease-out,
+        border-color 0.4s ease-out,
+        box-shadow 0.4s ease-out,
+        padding 0.4s ease-out,
+        backdrop-filter 0.4s ease-out,
+        background-image 0.4s ease-out;
+}
+
+/* Style, wenn die Navi OBEN im Hero-Bild ist */
+nav.nav-top {
+    background: transparent;
+    background-image: none;
+}
+
+/* Style, wenn man nach unten gescrollt hat */
+nav.nav-scrolled {
+    background-color: rgba(255, 255, 255, 0.30);
+    background-image: linear-gradient(90deg,
+            rgba(246, 245, 243, 0.55) 22%,
+            rgba(250, 250, 249, 0.10) 55%,
+            rgba(246, 245, 243, 0.55) 75%);
+    backdrop-filter: blur(7px);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border-color: rgb(255, 255, 255);
+    padding: 8px 33px;
+}
+
+nav .logo {
+    font-family: var(--font-headline), serif;
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: white;
+    transition: color 0.4s ease-out;
+}
+
+nav.nav-scrolled .logo {
+    color: #333;
+}
+
+nav .nav-links a {
+    color: white;
+    text-decoration: none;
+    margin-left: 30px;
+    font-weight: 600;
+    transition: color 0.4s ease-out;
+}
+
+nav.nav-scrolled .nav-links a {
+    color: #333;
+}
+
+nav.nav-initial {
+    padding: 13px 33px;
+    box-shadow: none;
+}
+
+nav.nav-initial .logo,
+nav.nav-initial .nav-links a {
+    color: #333;
+}
+
+/* ---------------- Burger + Mobile Menü ---------------- */
+/* Burger Button (standard: hidden) */
+.nav-burger {
+    display: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.10);
+    cursor: pointer;
+    padding: 0;
+    align-items: center;
+    justify-content: center;
+}
+
+nav.nav-scrolled .nav-burger {
+    border-color: rgba(0, 0, 0, 0.10);
+    background: rgba(255, 255, 255, 0.30);
+}
+
+/* Burger Lines */
+.nav-burger__lines {
+    position: relative;
+    display: block;
+    width: 18px;
+    height: 2px;
+    background: rgba(0, 0, 0, 0.75);
+    border-radius: 999px;
+}
+
+.nav-burger__lines::before,
+.nav-burger__lines::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 18px;
+    height: 2px;
+    background: rgba(0, 0, 0, 0.75);
+    border-radius: 999px;
+}
+
+.nav-burger__lines::before {
+    top: -6px;
+}
+
+.nav-burger__lines::after {
+    top: 6px;
+}
+
+nav.nav-scrolled .nav-burger__lines,
+nav.nav-scrolled .nav-burger__lines::before,
+nav.nav-scrolled .nav-burger__lines::after {
+    background: rgba(0, 0, 0, 0.75);
+}
+
+/* Wrapper sitzt fixed – so wie dein Nav vorher wahrscheinlich auch */
+.nav-shell {
+    position: fixed;
+    top: 12px;
+    left: 120px;
+    right: 120px;
+    z-index: 9999;
+}
+
+/* Mobile Dropdown */
+.nav-mobile {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    right: 0;
+    border-radius: 10px;
+    padding: 10px;
+    opacity: 0;
+    transform: translateY(-6px);
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    z-index: 9999;
+}
+
+/* unterschiedliche Surface je nach State */
+nav.nav-top+.nav-mobile,
+nav.nav-scrolled+.nav-mobile {
+    background-color: rgba(255, 255, 255, 0.30);
+    background-image: linear-gradient(90deg,
+            rgba(246, 245, 243, 0.55) 22%,
+            rgba(250, 250, 249, 0.10) 55%,
+            rgba(246, 245, 243, 0.55) 75%);
+    backdrop-filter: blur(7px);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgb(255, 255, 255);
+}
+
+.nav-mobile.open {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.nav-mobile a {
+    display: block;
+    padding: 12px 12px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+nav.nav-top .nav-mobile a {
+    color: rgba(255, 255, 255, 0.92);
+}
+
+.nav-mobile a {
+    color: #333;
+}
+
+/* Responsive: Desktoplinks aus, Burger an */
+@media (max-width: 900px) {
+    .nav-shell {
+        left: 12px;
+        right: 12px;
+    }
+
+    nav.main-nav {
+        left: 12px;
+        right: 12px;
+        padding: 13px 16px;
+    }
+
+    nav.nav-scrolled {
+        padding: 8px 16px;
+    }
+
+    nav .nav-links {
+        display: none;
+    }
+
+    .nav-burger {
+        display: inline-flex;
+    }
+}
+
+/* --- Nav styles --- */
+.nav-links .nav-link {
+    display: inline-block;
+    padding: 0;
+    border-radius: 0;
+    background: none;
+    text-decoration: none;
+    color: inherit;
+    overflow: visible;
+}
+
+.nav-links .nav-link>span {
+    position: relative;
+    display: inline-block;
+}
+
+.nav-links .nav-link>span::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -6px;
+    height: 2px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.42);
+    opacity: 0;
+    transform: scaleX(0.7);
+    transform-origin: center;
+    transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.nav-links .nav-link:hover>span::after {
+    opacity: 1;
+    transform: scaleX(1);
+}
+
+nav.nav-scrolled .nav-links .nav-link>span::after,
+nav.nav-initial .nav-links .nav-link>span::after {
+    background: rgba(0, 0, 0, 0.34);
+}
+
+.nav-links .nav-link::before {
+    content: "";
+    position: absolute;
+    left: -18px;
+    right: -18px;
+    top: -12px;
+    bottom: -16px;
+    pointer-events: none;
+    background: radial-gradient(circle at 30% 30%,
+            rgba(255, 255, 255, 0.20),
+            rgba(255, 255, 255, 0) 55%);
+    opacity: 0;
+    transform: translateX(-10%);
+    transition: opacity 180ms ease, transform 240ms ease;
+}
+
+/* Start (vor Scroll): weiß */
+nav.nav-top .logo,
+nav.nav-top .nav-links a {
+    color: rgba(255, 255, 255, 0.92);
+}
+
+/* Nach Scroll + Unterseiten (initial): dunkel */
+nav.nav-scrolled .logo,
+nav.nav-scrolled .nav-links a,
+nav.nav-initial .logo,
+nav.nav-initial .nav-links a {
+    color: rgba(0, 0, 0, 0.78);
+}
+
+/* optional: Fokus sichtbar (Keyboard) */
+.nav-links .nav-link:focus-visible {
+    outline: none;
+}
+
+.nav-links .nav-link:focus-visible>span::after {
+    opacity: 1;
+    transform: scaleX(1);
+}
+
+/* Motion-respect */
+@media (prefers-reduced-motion: reduce) {
+
+    .nav-links .nav-link>span::after,
+    .nav-links .nav-link::before {
+        transition: none;
+    }
+}
+
+/* Mobile menu links: text-only, no button feel */
+.nav-mobile .nav-mobile__link {
+    text-align: center;
+    display: block;
+    padding: 5px;
+    margin: 10px 2px;
+    text-decoration: none;
+    color: inherit;
+    overflow: visible;
+}
+
+/* Underline */
+.nav-mobile .nav-mobile__link>span {
+    position: relative;
+    display: inline-block;
+}
+
+.nav-mobile .nav-mobile__link>span::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -6px;
+    height: 2px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.42);
+    opacity: 0;
+    transform: scaleX(0.7);
+    transform-origin: center;
+    transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.nav-mobile .nav-mobile__link:hover>span::after,
+.nav-mobile .nav-mobile__link:focus-visible>span::after {
+    opacity: 1;
+    transform: scaleX(1);
+}
+
+/* Shine */
+.nav-mobile .nav-mobile__link::before {
+    content: "";
+    position: absolute;
+    left: -18px;
+    right: -18px;
+    top: -12px;
+    bottom: -16px;
+    pointer-events: none;
+    background: radial-gradient(circle at 30% 30%,
+            rgba(255, 255, 255, 0.20),
+            rgba(255, 255, 255, 0) 55%);
+
+    opacity: 0;
+    transform: translateX(-10%);
+    transition: opacity 180ms ease, transform 240ms ease;
+}
+
+nav.nav-scrolled+.nav-mobile .nav-mobile__link>span::after,
+nav.nav-initial+.nav-mobile .nav-mobile__link>span::after {
+    background: rgba(0, 0, 0, 0.34);
+}
+
+nav.nav-scrolled+.nav-mobile .nav-mobile__link::before,
+nav.nav-initial+.nav-mobile .nav-mobile__link::before {
+    background: radial-gradient(circle at 30% 30%,
+            rgba(0, 0, 0, 0.08),
+            rgba(0, 0, 0, 0) 58%);
+}
+
+/* Motion-respect Mobile */
+@media (prefers-reduced-motion: reduce) {
+
+    .nav-mobile .nav-mobile__link>span::after,
+    .nav-mobile .nav-mobile__link::before {
+        transition: none;
+    }
+}

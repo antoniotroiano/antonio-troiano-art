@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@300;400&display=swap');
+
+:root {
+    --font-main: 'Roboto', sans-serif;
+    --font-headline: 'Playfair Display', serif;
+    --color-text: #333;
+    --color-light: #f4f4f4;
+    --color-dark: #111;
+    --shadow-offset: 0;
+    --shadow-blur: 20px;
+    --shadow-spread: -5px;
+    --shadow-color: rgba(255, 255, 255, 0.7);
+    --tint-color: 255, 255, 255;
+    --tint-opacity: 0.4;
+    --frost-blur: 2px;
+    --noise-frequency: 0.008;
+    --distortion-strength: 77;
+    --outer-shadow-blur: 24px;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+a:hover {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+button:hover {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+body {
+    font-family: var(--font-main), serif;
+    font-weight: 300;
+    margin: 0;
+    color: var(--color-text);
+    background-color: var(--color-light);
+}
+
+.main-styles {
+    padding-top: 40px;
+}
+
+.main-detail {
+    padding: 110px 0px;
+}
+
+#scrollTopBtn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 999;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s, background-color 0.3s;
+}
+
+#scrollTopBtn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+#scrollTopBtn.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+#goBackBtn {
+    position: fixed;
+    top: 4em;
+    left: 30px;
+    z-index: 999;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    padding: 16px 16px;
+    line-height: 1;
+    text-decoration: none;
+    font-size: 24px;
+    cursor: pointer;
+    opacity: 1;
+    visibility: visible;
+    transition: background-color 0.3s;
+}
+
+#goBackBtn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* --- Glass Panel --- */
+.glass-panel {
+    z-index: 2;
+    max-width: 800px;
+    padding: 50px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.10);
+    -webkit-backdrop-filter: blur(9px);
+    backdrop-filter: blur(9px);
+    border-radius: 10px;
+    box-shadow: inset 0 0 10px 0.01em rgba(255, 255, 255, 0.3);
+    border: 0.01em solid rgba(255, 255, 255, 0.658);
+}
+
+.glass-panel::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    background:
+        radial-gradient(120% 90% at 10% 0%, rgba(255, 255, 255, 0.50), transparent 55%),
+        radial-gradient(90% 80% at 90% 100%, rgba(255, 255, 255, 0.20), transparent 55%);
+    opacity: 0.35;
+}
+
+.glass-panel::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.08;
+    background-image:
+        repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.20) 0, rgba(255, 255, 255, 0.20) 1px, transparent 1px, transparent 2px);
+    mix-blend-mode: overlay;
+}
+
+.glass-panel h1 {
+    font-family: var(--font-headline), serif;
+    font-size: 2.4em;
+    margin: 0;
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+}
+
+.glass-panel p {
+    font-size: 1.2em;
+    max-width: 600px;
+    margin: 20px auto 0 auto;
+    line-height: 1.6;
+}

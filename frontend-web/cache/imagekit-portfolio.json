@@ -1,0 +1,333 @@
+{
+  "folder": "portfolio",
+  "path": "/portfolio",
+  "fetchedAt": "2026-02-20T19:22:37.764Z",
+  "count": 19,
+  "items": [
+    {
+      "fileId": "698891c3865b822795012f8b",
+      "name": "2025_no3_1.webp",
+      "filePath": "/portfolio/2025_no3_1.webp",
+      "url": "https://ik.imagekit.io/atart/portfolio/2025_no3_1.webp?updatedAt=1771074567703",
+      "width": 1434,
+      "height": 1412,
+      "size": 577752,
+      "createdAt": "2026-02-08T13:38:11.782Z",
+      "updatedAt": "2026-02-14T13:09:27.703Z",
+      "tags": null,
+      "customMetadata": {
+        "title": "2025",
+        "year": 2025,
+        "year_art": 2025,
+        "title_art": "No. 03 - Grenzen",
+        "title_art_en": "No. 03 - Border"
+      }
+    },
+    {
+      "fileId": "698891c5865b82279501301a",
+      "name": "2024_no3.webp",
+      "filePath": "/portfolio/2024_no3.webp",
+      "url": "https://ik.imagekit.io/atart/portfolio/2024_no3.webp?updatedAt=1771074544647",
+      "width": 873,
+      "height": 1225,
+      "size": 255842,
+      "createdAt": "2026-02-08T13:38:13.562Z",
+      "updatedAt": "2026-02-14T13:09:04.647Z",
+      "tags": null,
+      "customMetadata": {
+        "year_art": 2024,
+        "title_art": "No. 03",
+        "title_art_en": "No. 03"
+      }
+    },
+    {
+      "fileId": "698891c5ec9104b2ab5d4599",
+      "name": "2024_no13.webp",
+      "filePath": "/portfolio/2024_no13.webp",
+      "url": "https://ik.imagekit.io/atart/portfolio/2024_no13.webp?updatedAt=1771074537495",
+      "width": 940,
+      "height": 1319,
+      "size": 181862,
+      "createdAt": "2026-02-08T13:38:13.046Z",
+      "updatedAt": "2026-02-14T13:08:57.495Z",
+      "tags": null,
+      "customMetadata": {
+        "year_art": 2024,
+        "title_art": "No. 13",
+        "title_art_en": "No. 13"
+      }
+    },
+    {
+      "fileId": "698891c6e5d7d75724e74074",
+      "name": "2024_no15.webp",
+      "filePath": "/portfolio/2024_no15.webp",
+      "url": "https://ik.imagekit.io/atart/portfolio/2024_no15.webp?updatedAt=1771074527671",
+      "width": 753,
+      "height": 741,
+      "size": 196594,
+      "createdAt": "2026-02-08T13:38:14.597Z",
+      "updatedAt": "2026-02-14T13:08:47.671Z",
+      "tags": null,
+      "customMetadata": {
+        "year_art": 2024,
+        "title_art": "No. 15",
+        "title_art_en": "No. 15"
+      }
+    },
+    {
+      "fileId": "698891c7865b82279501309a",
+      "name": "2023_no9.webp",
+      "filePath": "/portfolio/2023_no9.webp",
+      "url": "https://ik.imagekit.io/atart/portfolio/2023_no9.webp?updatedAt=1771074519825",
+      "width": 1117,
+      "height": 776,
+      "size": 137582,
+      "createdAt": "2026-02-08T13:38:15.049Z",
+      "updatedAt": "2026-02-14T13:08:39.825Z",
+      "tags": null,
+      "customMetadata": {
+        "year_art": 2023,
+        "title_art": "No. 09",
+        "title_art_en": "No. 09"
+      }
+    },
+    {
+      "fileId": "698891c7ec9104b2ab5d469d",
+      "name": "2023_no7.webp",
+      "filePath": "/portfolio/2023_no7.webp",
+      "url": "https://ik.imagekit.io/atart/portfolio/2023_no7.webp?updatedAt=1771074511970",
+      "width": 1125,
+      "height": 775,
+      "size": 193888,
+      "createdAt": "2026-02-08T13:38:15.526Z",
+      "updatedAt": "2026-02-14T13:08:31.970Z",
+      "tags": null,
+      "customMetadata": {
+        "year_art": 2023,
+        "title_art": "No. 07",
+        "title_art_en": "No. 07"
+      }
+    },
+    {
+      "fileId": "698891c8e5d7d75724e7410a",
+      "name": "2023_no10.webp",
+      "filePath": "/portfolio/2023_no10.webp",
+      "url": "https://ik.imagekit.io/atart/portfolio/2023_no10.webp?updatedAt=1771074502164",
+      "width": 984,
+      "height": 984,
+      "size": 164350,
+      "createdAt": "2026-02-08T13:38:16.220Z",
+      "updatedAt": "2026-02-14T13:08:22.164Z",
+      "tags": null,
+      "customMetadata": {
+        "title_art": "No. 10",
+        "year_art": 2023,
+        "title_art_en": "No. 10"
+      }
+    },
+    {
+      "fileId": "698891c8e5d7d75724e7412c",
+      "name": "2025_no2.webp",
+      "filePath": "/portfolio/2025_no2.webp",
+      "url": "https://ik.imagekit.io/atart/portfolio/2025_no2.webp?updatedAt=1771074491626",
+      "width": 740,
+      "height": 988,
+      "size": 132028,
+      "createdAt": "2026-02-08T13:38:16.585Z",
+      "updatedAt": "2026-02-14T13:08:11.626Z",
+      "tags": null,
+      "customMetadata": {
+        "year_art": 2025,
+        "title_art": "No. 02",
+        "title_art_en": "No. 02"
+      }
+    },
+    {
+      "fileId": "698891c9865b822795013200",
+      "name": "2024_no14_1.webp",
+      "filePath": "/portfolio/2024_no14_1.webp",
+      "url": "https://ik.imagekit.io/atart/portfolio/2024_no14_1.webp?updatedAt=1771074481277",
+      "width": 1628,
+      "height": 1621,
+      "size": 618196,
+      "createdAt": "2026-02-08T13:38:17.977Z",
+      "updatedAt": "2026-02-14T13:08:01.277Z",
+      "tags": null,
+      "customMetadata": {
+        "year_art": 2024,
+        "title_art": "No. 14 - Canyon",
+        "title_art_en": "No. 14 - Canyon"
+      }
+    },
+    {
+      "fileId": "698891c9e5d7d75724e741db",
+      "name": "2025_no1_1.webp",
+      "filePath": "/portfolio/2025_no1_1.webp",
+      "url": "https://ik.imagekit.io/atart/portfolio/2025_no1_1.webp?updatedAt=1771074465302",
+      "width": 2104,
+      "height": 2104,
+      "size": 961418,
+      "createdAt": "2026-02-08T13:38:17.534Z",
+      "updatedAt": "2026-02-14T13:07:45.302Z",
+      "tags": null,
+      "customMetadata": {
+        "year_art": 2025,
+        "title_art": "No. 01 - Strand",
+        "title_art_en": "No. 01 - Beach"
+      }
+    },
+    {
+      "fileId": "698891c9ec9104b2ab5d4757",
+      "name": "2024_no7.webp",
+      "filePath": "/portfolio/2024_no7.webp",
+      "url": "https://ik.imagekit.io/atart/portfolio/2024_no7.webp?updatedAt=1771074443878",
+      "width": 998,
+      "height": 735,
+      "size": 81626,
+      "createdAt": "2026-02-08T13:38:17.096Z",
+      "updatedAt": "2026-02-14T13:07:23.878Z",
+      "tags": null,
+      "customMetadata": {
+        "year_art": 2024,
+        "title_art": "No. 07",
+        "title_art_en": "No. 07"
+      }
+    },
+    {
+      "fileId": "698891caec9104b2ab5d47d0",
+      "name": "2024_no10_1.webp",
+      "filePath": "/portfolio/2024_no10_1.webp",
+      "url": "https://ik.imagekit.io/atart/portfolio/2024_no10_1.webp?updatedAt=1771074431921",
+      "width": 927,
+      "height": 1238,
+      "size": 156844,
+      "createdAt": "2026-02-08T13:38:18.759Z",
+      "updatedAt": "2026-02-14T13:07:11.921Z",
+      "tags": null,
+      "customMetadata": {
+        "title_art": "No. 10 - Gebirgskette",
+        "year_art": 2024,
+        "title_art_en": "No. 10 - Mountain Range"
+      }
+    },
+    {
+      "fileId": "698891cbec9104b2ab5d47f2",
+      "name": "2024_no9_1.webp",
+      "filePath": "/portfolio/2024_no9_1.webp",
+      "url": "https://ik.imagekit.io/atart/portfolio/2024_no9_1.webp?updatedAt=1771074410838",
+      "width": 1764,
+      "height": 2112,
+      "size": 839706,
+      "createdAt": "2026-02-08T13:38:19.100Z",
+      "updatedAt": "2026-02-14T13:06:50.838Z",
+      "tags": null,
+      "customMetadata": {
+        "year_art": 2024,
+        "title_art": "No. 09 – Stürmische See",
+        "title_art_en": "No. 09 - Stormy Seas"
+      }
+    },
+    {
+      "fileId": "698891cbec9104b2ab5d4826",
+      "name": "2024_no4_1.webp",
+      "filePath": "/portfolio/2024_no4_1.webp",
+      "url": "https://ik.imagekit.io/atart/portfolio/2024_no4_1.webp?updatedAt=1771074392355",
+      "width": 1405,
+      "height": 1406,
+      "size": 676954,
+      "createdAt": "2026-02-08T13:38:19.803Z",
+      "updatedAt": "2026-02-14T13:06:32.355Z",
+      "tags": null,
+      "customMetadata": {
+        "year_art": 2024,
+        "title_art": "No. 04",
+        "title_art_en": "No. 04"
+      }
+    },
+    {
+      "fileId": "698891cc865b8227950132e4",
+      "name": "2024_no1_1.webp",
+      "filePath": "/portfolio/2024_no1_1.webp",
+      "url": "https://ik.imagekit.io/atart/portfolio/2024_no1_1.webp?updatedAt=1771074376750",
+      "width": 1747,
+      "height": 2443,
+      "size": 875800,
+      "createdAt": "2026-02-08T13:38:20.922Z",
+      "updatedAt": "2026-02-14T13:06:16.750Z",
+      "tags": null,
+      "customMetadata": {
+        "year_art": 2024,
+        "title_art": "No. 01 - Meeresgischt",
+        "title_art_en": "No. 01 - Sea Spray"
+      }
+    },
+    {
+      "fileId": "698891cce5d7d75724e7425d",
+      "name": "2024_no6_1.webp",
+      "filePath": "/portfolio/2024_no6_1.webp",
+      "url": "https://ik.imagekit.io/atart/portfolio/2024_no6_1.webp?updatedAt=1771074350560",
+      "width": 1743,
+      "height": 2469,
+      "size": 848186,
+      "createdAt": "2026-02-08T13:38:20.190Z",
+      "updatedAt": "2026-02-14T13:05:50.560Z",
+      "tags": null,
+      "customMetadata": {
+        "year_art": 2024,
+        "title_art": "No. 06",
+        "title_art_en": "No. 06"
+      }
+    },
+    {
+      "fileId": "698891cce5d7d75724e74295",
+      "name": "2023_no2_1.webp",
+      "filePath": "/portfolio/2023_no2_1.webp",
+      "url": "https://ik.imagekit.io/atart/portfolio/2023_no2_1.webp?updatedAt=1771074336961",
+      "width": 2112,
+      "height": 2091,
+      "size": 902550,
+      "createdAt": "2026-02-08T13:38:20.534Z",
+      "updatedAt": "2026-02-14T13:05:36.961Z",
+      "tags": null,
+      "customMetadata": {
+        "year_art": 2023,
+        "title_art": "No. 02",
+        "title_art_en": "No. 02"
+      }
+    },
+    {
+      "fileId": "698891cde5d7d75724e7432d",
+      "name": "2022_no8_1.webp",
+      "filePath": "/portfolio/2022_no8_1.webp",
+      "url": "https://ik.imagekit.io/atart/portfolio/2022_no8_1.webp?updatedAt=1771074323467",
+      "width": 1752,
+      "height": 1756,
+      "size": 885040,
+      "createdAt": "2026-02-08T13:38:21.319Z",
+      "updatedAt": "2026-02-14T13:05:23.467Z",
+      "tags": null,
+      "customMetadata": {
+        "year_art": 2022,
+        "title_art": "No. 08",
+        "title_art_en": "No. 08"
+      }
+    },
+    {
+      "fileId": "698891cde5d7d75724e7439a",
+      "name": "2023_no1_1.webp",
+      "filePath": "/portfolio/2023_no1_1.webp",
+      "url": "https://ik.imagekit.io/atart/portfolio/2023_no1_1.webp?updatedAt=1771074301760",
+      "width": 1425,
+      "height": 1418,
+      "size": 494454,
+      "createdAt": "2026-02-08T13:38:21.782Z",
+      "updatedAt": "2026-02-14T13:05:01.760Z",
+      "tags": null,
+      "customMetadata": {
+        "year_art": 2023,
+        "title_art": "No. 01 - Küste",
+        "title_art_en": "No. 01 - Coast"
+      }
+    }
+  ]
+}

@@ -1,0 +1,180 @@
+/* --- Shop Styles --- */
+.shop-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.shop-item {
+    text-align: center;
+    padding: 20px;
+}
+
+.shop-item img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.shop-item h3 {
+    font-family: var(--font-headline), serif;
+    font-size: 1.5em;
+    margin: 0 0 10px 0;
+    color: white;
+}
+
+.shop-item .price {
+    font-size: 1.2em;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 20px;
+}
+
+/* Glass styles */
+.glass-shop-card {
+    background: rgba(255, 255, 255, 0.10);
+    border-radius: 10px;
+    border: 0.01em solid rgba(255, 255, 255, 0.658);
+    box-shadow: inset 0 0 10px 0.01em rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(18px);
+}
+
+.glass-shop-card:hover {
+    box-shadow: 0 16px 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+.glass-shop-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    background:
+        radial-gradient(120% 90% at 10% 0%, rgba(255, 255, 255, 0.50), transparent 55%),
+        radial-gradient(90% 80% at 90% 100%, rgba(255, 255, 255, 0.20), transparent 55%);
+    opacity: 0.35;
+}
+
+.glass-shop-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.08;
+    background-image:
+        repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.20) 0, rgba(255, 255, 255, 0.20) 1px, transparent 1px, transparent 2px);
+    mix-blend-mode: overlay;
+}
+
+/* Produkt Karte */
+.product-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    text-decoration: none;
+    color: #333;
+    transition: all 0.3s ease;
+    will-change: transform;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+}
+
+.product-card img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    display: block;
+}
+
+.product-card-info {
+    padding: 20px;
+}
+
+.product-card h3 {
+    margin: 0 0 10px 0;
+    font-family: 'Playfair Display', serif;
+}
+
+.product-card .price {
+    font-size: 1.1em;
+    font-weight: 600;
+    color: #555;
+}
+
+/* Product Details */
+.product-detail-section {
+    display: grid;
+    gap: 50px;
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 0 30px;
+    align-items: center;
+}
+
+@media (min-width: 768px) {
+    .product-detail-section {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.product-image img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.product-info h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3em;
+    margin: 0 0 20px 0;
+}
+
+.product-info .price {
+    font-size: 1.8em;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #111;
+}
+
+.product-info .description {
+    line-height: 1.7;
+    margin-bottom: 30px;
+}
+
+.product-specs {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 30px;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+
+.product-specs li {
+    margin-bottom: 10px;
+}
+
+.product-specs strong {
+    display: inline-block;
+    width: 120px;
+    color: #555;
+}
+
+.product-status {
+    font-weight: 600;
+}
+
+.product-status--sold {
+    color: #ef4444;
+}
+
+.sold {
+    background: #888;
+    color: #ccc;
+    cursor: not-allowed;
+}

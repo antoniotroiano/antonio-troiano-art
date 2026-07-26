@@ -1,99 +1,127 @@
-import {BlogCard} from '@/components/BlogCard';
-import {fetchPosts} from '@/lib/api/fetchPosts';
-import {Metadata} from 'next';
+import { Metadata } from "next";
+import Footer from "@/components/Footer";
+import MainNav from "@/components/MainNav";
+import SubpageScrollEffects from "@/components/SubpageScrollEffects";
+import Link from "next/link";
+import { getAllBlogPosts } from "@/lib/datocms";
 
-export const dynamic = 'force-dynamic';
-export const revalidate = 86400;
-
-export const generateMetadata = async (): Promise<Metadata> => {
-    const posts = await fetchPosts();
-
-    const defaultImage = {
-        url: 'https://ik.imagekit.io/atart/titel-og.webp',
-        width: 1200,
-        height: 630,
-        alt: 'Blog cover image with abstract artworks',
-    };
-
-    const firstImage = posts.length > 0 && posts[0].cover
-        ? {
-            url: posts[0].cover,
-            width: 1200,
-            height: 630,
-            alt: posts[0].title,
-        }
-        : defaultImage;
-
-    return {
-        title: 'Blog – Antonio Troiano Art',
-        description: 'Get insights into Antonio Troiano’s artistic process, creative inspirations, and behind-the-scenes stories. Thoughts on abstract painting and visual storytelling.',
-        keywords: [
-            'Antonio Troiano',
-            'Art Blog',
-            'Contemporary Art Insights',
-            'Modern Art Commentary',
-            'Art Exhibitions',
-            'Painting Blog',
-            'Abstract Art Articles',
-        ],
-        alternates: {
-            canonical: 'https://antonio-troiano.de/blog',
-        },
-        openGraph: {
-            title: 'Blog – Antonio Troiano Art',
-            description: 'Explore art insights, creative thoughts, and exhibition updates from Antonio Troiano.',
-            url: 'https://antonio-troiano.de/blog',
-            siteName: 'Antonio Troiano Art',
-            type: 'website',
-            locale: 'de_DE',
-            images: [firstImage],
-        },
-        twitter: {
-            card: 'summary_large_image',
-            title: 'Blog – Antonio Troiano Art',
-            description: 'Explore creative thoughts and art stories from Antonio Troiano.',
-            images: [firstImage.url],
-        },
-    };
+export const metadata: Metadata = {
+  title: "Blog – Aus dem Atelier | Abstrakte Kunst & Einblicke",
+  description:
+    "Im Blog von Antonio Troiano findest du Einblicke in abstrakte Kunst, kreative Prozesse und Gedanken aus dem Atelier.",
+  alternates: {
+    canonical: "https://antonio-troiano.de/blog",
+  },
+  openGraph: {
+    title: "Blog – Aus dem Atelier",
+    description:
+      "Einblicke in abstrakte Kunst, kreative Prozesse und Gedanken aus dem Atelier von Antonio Troiano.",
+    url: "https://antonio-troiano.de/blog",
+    type: "website",
+  },
 };
 
-export default async function Blog() {
-    const posts = await fetchPosts();
+function formatGermanDate(isoDate: string) {
+  const date = new Date(isoDate);
 
-    const jsonLd = {
-        '@context': 'https://schema.org',
-        '@type': 'Blog',
-        name: 'Antonio Troiano Art Blog',
-        url: 'https://antonio-troiano.de/blog',
-        description: 'Explore art insights, creative thoughts, and exhibition updates from Antonio Troiano.',
-        creator: {
-            '@type': 'Person',
-            name: 'Antonio Troiano',
-            sameAs: [
-                'https://www.instagram.com/antonio.troiano.art',
-                'https://antonio-troiano.de',
-            ],
-        },
-    };
+  return new Intl.DateTimeFormat("de-DE", {
+    timeZone: "Europe/Berlin",
+    day: "2-digit",
+    month: "long",
+    year: "numeric",
+  }).format(date);
+}
 
-    return (
-        <>
-            <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(jsonLd)}}/>
-            <div className="flex flex-col pt-35 px-7 pb-30 items-center">
-                <h1 className="text-2xl lg:text-3xl font-bold text-gray-800 mb-4 text-center">All about my art</h1>
-                <blockquote
-                    className="glassmorphism-bg-infobox p-5 text-center italic max-w-2xl mx-auto mb-15 text-lg text-gray-800">
-                    "Discover the stories behind my work – dive into the inspirations, techniques, and thoughts that
-                    shape each piece."
-                </blockquote>
-                <div className="w-full max-w-7xl">
-                    <div className="gap-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-                        {posts.map((post) => (
-                            <BlogCard key={post.id} post={post}/>
-                        ))}
-                    </div>
-                </div>
-            </div>
-        </>
-    );
+export default async function Page() {
+  const posts = await getAllBlogPosts();
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "CollectionPage",
+        name: "Blog – Aus dem Atelier",
+        url: "https://antonio-troiano.de/blog",
+        description:
+          "Blog mit Artikeln über abstrakte Kunst, kreative Prozesse und Atelier-Einblicke.",
+        inLanguage: "de-DE",
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Startseite",
+            item: "https://antonio-troiano.de",
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Blog",
+            item: "https://antonio-troiano.de/blog",
+          },
+        ],
+      },
+    ],
+  };
+
+  return (
+    <div>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <button id="scrollTopBtn" title="Nach oben">
+        &#8679;
+      </button>
+      <MainNav initial />
+      <main className="main-styles">
+        <section className="section-padding">
+          <section className="section">
+            <h1 className="section-title-subpages">Aus dem Atelier</h1>
+            <p className="section-subtitle">
+              Gedanken, Prozesse und Einblicke in meine abstrakte Kunst
+            </p>
+
+            {posts.length === 0 ? (
+              <p className="meta">Noch keine Beiträge vorhanden.</p>
+            ) : (
+              <div className="blog-list">
+                {posts.map((post) => {
+                  const href = `/blog/${post.slug}`;
+                  const dateLabel = post.publishedat
+                    ? `Veröffentlicht am ${formatGermanDate(post.publishedat)}`
+                    : "";
+
+                  return (
+                    <Link key={post.id} href={href} className="blog-post-summary">
+                      {post.heroimagefileid ? (
+                        <img src={`${post.heroimagefileid}&tr=w-600,h-600,c-fill,q-70,f-auto`} alt={post.title} loading="lazy" />
+                      ) : (
+                        <div className="blog-media" />
+                      )}
+                      <div className="blog-post-content">
+                        <h2>{post.title}</h2>
+                        {dateLabel ? (
+                          <p className="meta">{dateLabel}</p>
+                        ) : null}
+                        {post.author ? (
+                          <p className="meta">Von {post.author}</p>
+                        ) : null}
+                        {post.subtitle ? (
+                          <p className="excerpt">{post.subtitle}</p>
+                        ) : post.excerpt ? (
+                          <p className="excerpt">{post.excerpt}</p>
+                        ) : null}
+                      </div>
+                    </Link>
+                  );
+                })}
+              </div>
+            )}
+          </section>
+        </section>
+      </main>
+      <Footer />
+      <SubpageScrollEffects />
+    </div>
+  );
 }

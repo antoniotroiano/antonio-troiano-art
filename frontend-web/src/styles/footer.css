@@ -1,0 +1,134 @@
+/* --- Footer Styles --- */
+footer {
+    text-align: center;
+    padding: 30px;
+    background: #222;
+    color: #aaa;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+footer p {
+    margin: 1em 0em;
+}
+
+footer .link {
+    background: none;
+    border-radius: 0;
+    padding: 0;
+    text-decoration: none;
+    display: inline-block;
+    overflow: visible;
+}
+
+footer .link a {
+    color: white;
+    margin-left: 30px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color .4s ease-out;
+}
+
+footer .link>span {
+    position: relative;
+    display: inline-block;
+}
+
+footer .link>span::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -6px;
+    height: 2px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.42);
+    opacity: 0;
+    transform: scaleX(0.7);
+    transform-origin: center;
+    transition: opacity 180ms ease, transform 180ms ease;
+}
+
+footer .link:hover>span::after {
+    opacity: 1;
+    transform: scaleX(1);
+}
+
+.footer-styles {
+    text-align: center;
+    padding: 2em 0;
+}
+
+/* --- Sozial Media Buttons Styles --- */
+.social-glass {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+.social-glass-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    backdrop-filter: blur(8px);
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.8);
+    transition: all 0.3s ease;
+}
+
+.social-glass-btn:hover {
+    transform: scale(1.08);
+    background: rgba(255, 255, 255, 0.18);
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.2);
+}
+
+.social-hidden {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.social-visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 0.7s ease;
+}
+
+.product-media {
+    margin-top: 18px;
+    margin-bottom: 20px;
+}
+
+.artwork-share {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.share-btn {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    padding: 8px 12px;
+    border-radius: 10px;
+    backdrop-filter: blur(8px);
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.share-btn:hover {
+    background: rgba(255, 255, 255, 0.18);
+}

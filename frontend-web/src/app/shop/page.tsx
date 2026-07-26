@@ -1,80 +1,75 @@
-import {fetchShop} from '@/lib/api/fetchShop';
-import ShopGallery from '@/components/shop/ShopGallery';
-import {Metadata} from 'next';
+import { Metadata } from "next";
+import MainNav from "@/components/MainNav";
+import Footer from "@/components/Footer";
+import ShopGrid from "@/components/shop/ShopGrid";
+import SubpageScrollEffects from "@/components/SubpageScrollEffects";
 
-export const dynamic = 'force-dynamic';
-export const revalidate = 86400;
-
-export const generateMetadata = async (): Promise<Metadata> => {
-    const shopImages = await fetchShop();
-
-    const defaultImage = {
-        url: 'https://ik.imagekit.io/atart/titel-og.webp',
-        width: 1200,
-        height: 630,
-        alt: 'Shop Teaser Image',
-    };
-
-    const firstImage = shopImages.length > 0
-        ? {
-            url: shopImages[0].shopImageUrls[0],
-            width: 1200,
-            height: 630,
-            alt: shopImages[0].title,
-        }
-        : defaultImage;
-
-    return {
-        title: 'Shop – Unique Artworks',
-        description: 'Browse and purchase original abstract acrylic artworks by Antonio Troiano. Each piece is one-of-a-kind, expressive, and handmade on canvas – perfect for collectors, art lovers, and interiors.',
-        alternates: {
-            canonical: 'https://antonio-troiano.de/shop',
-        },
-        openGraph: {
-            title: 'Shop – Unique Artworks',
-            description: 'Browse all available artworks in the shop. Each piece is handcrafted and unique.',
-            url: 'https://antonio-troiano.de/shop',
-            siteName: 'Antonio Troiano Art',
-            images: [firstImage],
-            locale: 'de_DE',
-            type: 'website',
-        },
-        twitter: {
-            card: 'summary_large_image',
-            title: 'Shop – Unique Artworks',
-            description: 'Browse all available artworks in the shop.',
-            images: [firstImage.url],
-        },
-    };
+export const metadata: Metadata = {
+    title: "Shop – Abstrakte Kunst & Moderne Gemälde kaufen",
+    description:
+        "Kaufe originale abstrakte Kunstwerke von Antonio Troiano. Moderne Gemälde voller Ausdruck, Farbe und Emotion – direkt online entdecken.",
+    alternates: {
+        canonical: "https://antonio-troiano.de/shop",
+    },
+    openGraph: {
+        title: "Shop – Abstrakte Kunst kaufen",
+        description:
+            "Originale moderne Gemälde und abstrakte Kunstwerke von Antonio Troiano online kaufen.",
+        url: "https://antonio-troiano.de/shop",
+        type: "website",
+    },
 };
 
-export default async function Shop() {
-    const shopImages = await fetchShop();
-
+export default function ShopPage() {
     const jsonLd = {
-        '@context': 'https://schema.org',
-        '@type': 'CollectionPage',
-        name: 'Art Shop',
-        description: 'A collection of unique handcrafted artworks.',
-        mainEntity: {
-            '@type': 'ItemList',
-            itemListElement: shopImages.map((img, index) => ({
-                '@type': 'ListItem',
-                position: index + 1,
-                url: `https://antonio-troiano.de/shop/${img.id}`,
-                item: {
-                    '@type': 'Product',
-                    name: img.title,
-                    image: Array.isArray(img.shopImageUrls) ? img.shopImageUrls : [img.shopImageUrls],
-                },
-            })),
-        },
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "CollectionPage",
+                name: "Shop – Abstrakte Kunst kaufen",
+                url: "https://antonio-troiano.de/shop",
+                description:
+                    "Online-Shop für originale abstrakte Kunstwerke von Antonio Troiano.",
+                inLanguage: "de-DE",
+            },
+            {
+                "@type": "BreadcrumbList",
+                itemListElement: [
+                    {
+                        "@type": "ListItem",
+                        position: 1,
+                        name: "Startseite",
+                        item: "https://antonio-troiano.de",
+                    },
+                    {
+                        "@type": "ListItem",
+                        position: 2,
+                        name: "Shop",
+                        item: "https://antonio-troiano.de/shop",
+                    },
+                ],
+            },
+        ],
     };
 
     return (
-        <>
-            <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(jsonLd)}}/>
-            <ShopGallery shopImages={shopImages}/>
-        </>
+        <div>
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+            <button id="scrollTopBtn" title="Nach oben">&#8679;</button>
+            <MainNav initial />
+            <main className="main-styles">
+                <section className="section-padding">
+                    <section className="section">
+                        <h1 className="section-title-subpages">Shop</h1>
+                        <p className="section-subtitle">
+                            Originale abstrakte Kunstwerke und moderne Gemälde zum Kauf
+                        </p>
+                        <ShopGrid folder="shop" />
+                    </section>
+                </section>
+            </main>
+            <Footer />
+            <SubpageScrollEffects />
+        </div>
     );
 }

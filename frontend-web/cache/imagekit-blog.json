@@ -1,0 +1,47 @@
+{
+  "folder": "blog",
+  "path": "/blog",
+  "fetchedAt": "2026-02-20T19:22:38.007Z",
+  "count": 3,
+  "items": [
+    {
+      "fileId": "698893c1e5d7d75724e7fdd5",
+      "name": "blogpost3.webp",
+      "filePath": "/blog/blogpost3.webp",
+      "url": "https://ik.imagekit.io/atart/blog/blogpost3.webp?updatedAt=1770558401847",
+      "width": 1920,
+      "height": 1080,
+      "size": 545128,
+      "createdAt": "2026-02-08T13:46:41.843Z",
+      "updatedAt": "2026-02-08T13:46:41.847Z",
+      "tags": null,
+      "customMetadata": {}
+    },
+    {
+      "fileId": "698893c2865b82279501e784",
+      "name": "blogpost2.webp",
+      "filePath": "/blog/blogpost2.webp",
+      "url": "https://ik.imagekit.io/atart/blog/blogpost2.webp?updatedAt=1770558402884",
+      "width": 1920,
+      "height": 1080,
+      "size": 484284,
+      "createdAt": "2026-02-08T13:46:42.880Z",
+      "updatedAt": "2026-02-08T13:46:42.884Z",
+      "tags": null,
+      "customMetadata": {}
+    },
+    {
+      "fileId": "698893c4ec9104b2ab5e039f",
+      "name": "blogpost1.webp",
+      "filePath": "/blog/blogpost1.webp",
+      "url": "https://ik.imagekit.io/atart/blog/blogpost1.webp?updatedAt=1770558404292",
+      "width": 1920,
+      "height": 1080,
+      "size": 378130,
+      "createdAt": "2026-02-08T13:46:44.288Z",
+      "updatedAt": "2026-02-08T13:46:44.292Z",
+      "tags": null,
+      "customMetadata": {}
+    }
+  ]
+}

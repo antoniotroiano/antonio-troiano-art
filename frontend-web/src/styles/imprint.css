@@ -1,0 +1,46 @@
+/* --- Imprint Styles --- */
+.imprint__header {
+    margin-bottom: 28px;
+}
+
+.imprint__subtitle {
+    margin: 10px 0 0;
+    font-size: 14px;
+    line-height: 1.6;
+    color: rgba(17, 17, 17, 0.7);
+}
+
+.imprint__content {
+    font-size: 16px;
+    line-height: 1.85;
+    color: rgba(17, 17, 17, 0.92);
+}
+
+.imprint__section {
+    margin: 0 0 28px;
+}
+
+.imprint__muted {
+    color: rgba(17, 17, 17, 0.72);
+}
+
+.imprint__rule {
+    border: 0;
+    height: 1px;
+    background: rgba(17, 17, 17, 0.1);
+    margin: 26px 0;
+}
+
+.imprint__link {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 1px;
+    text-decoration-color: rgba(17, 17, 17, 0.35);
+    transition: opacity 160ms ease, text-decoration-color 160ms ease;
+}
+
+.imprint__link:hover {
+    opacity: 0.85;
+    text-decoration-color: rgba(17, 17, 17, 0.55);
+}

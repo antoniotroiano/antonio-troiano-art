@@ -1,0 +1,139 @@
+/* --- Button Styles --- */
+.btn-center {
+    text-align: center;
+    margin-top: 40px;
+}
+
+/* Base: kleiner Pill-Chip */
+.btn-chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 16px;
+    border-radius: 999px;
+    font-weight: 300;
+    font-size: 1em;
+    line-height: 1;
+    letter-spacing: 0.2px;
+    text-decoration: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    color: rgba(255, 255, 255, 0.92);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.14);
+    backdrop-filter: blur(8px);
+    transition: background 180ms ease, border-color 180ms ease, transform 120ms ease, box-shadow 180ms ease;
+}
+
+.btn-chip:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.22);
+    transform: translateY(-1px);
+}
+
+.btn-chip:active {
+    transform: translateY(0px) scale(0.99);
+}
+
+.btn-chip:focus-visible {
+    outline: none;
+    box-shadow:
+        0 10px 26px rgba(0, 0, 0, 0.14),
+        0 0 0 3px rgba(255, 255, 255, 0.18);
+}
+
+.btn-chip>span {
+    position: relative;
+}
+
+.btn-chip>span::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -6px;
+    height: 2px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.42);
+    opacity: 0;
+    transform: scaleX(0.7);
+    transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.btn-chip:hover>span::after {
+    opacity: 1;
+    transform: scaleX(1);
+}
+
+.btn-chip--shine {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-chip--shine::before {
+    content: "";
+    position: absolute;
+    inset: -60% -40%;
+    pointer-events: none;
+    background: radial-gradient(circle at 30% 30%,
+            rgba(255, 255, 255, 0.22),
+            rgba(255, 255, 255, 0) 55%);
+    opacity: 0.65;
+    transform: translateX(-12%);
+    transition: opacity 180ms ease, transform 240ms ease;
+}
+
+.btn-chip--shine:hover::before {
+    opacity: 0.95;
+    transform: translateX(0%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .btn-chip,
+    .btn-chip>span::after,
+    .btn-chip--shine::before {
+        transition: none;
+    }
+}
+
+.btn-chip--on-light {
+    color: rgba(20, 20, 20, 0.88);
+    text-shadow: none;
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    box-shadow:
+        0 10px 26px rgba(0, 0, 0, 0.10),
+        inset 0 1px 0 rgba(255, 255, 255, 0.70);
+    backdrop-filter: blur(8px);
+}
+
+.btn-chip--on-light:hover {
+    background: rgba(255, 255, 255, 0.86);
+    border-color: rgba(0, 0, 0, 0.16);
+    box-shadow:
+        0 12px 32px rgba(0, 0, 0, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.75);
+}
+
+.btn-chip--on-light>span::after {
+    background: rgba(0, 0, 0, 0.38);
+}
+
+.btn-chip--on-light.btn-chip--shine::before {
+    background: radial-gradient(circle at 30% 30%,
+            rgba(255, 255, 255, 0.55),
+            rgba(255, 255, 255, 0) 55%);
+    opacity: 0.55;
+}
+
+.btn-chip--on-light.btn-chip--shine:hover::before {
+    opacity: 0.85;
+}
+
+.btn-chip--disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
